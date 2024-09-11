@@ -1,6 +1,5 @@
 {% set name = "jupyter_ydoc" %}
-{% set version = "0.2.4" %}
-{% set sha256 = "a3f670a69135e90493ffb91d6788efe2632bf42c6cc42a25f25c2e6eddd55a0e" %}
+{% set version = "0.2.5" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 5a02ca7449f0d875f73e8cb8efdf695dddef15a8e71378b1f4eda6b7c90f5382
 
 build:
   number: 0
@@ -26,7 +25,7 @@ requirements:
   run:
     - python
     - importlib_metadata >=3.6 # [py<310]
-    - y-py >=0.5.3,<0.6.0
+    - y-py >=0.6.0,<0.7.0
 
 test:
   imports:
