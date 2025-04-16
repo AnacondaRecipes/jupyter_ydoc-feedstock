@@ -1,39 +1,38 @@
 {% set name = "jupyter_ydoc" %}
-{% set version = "0.2.5" %}
+{% set version = "3.0.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 5a02ca7449f0d875f73e8cb8efdf695dddef15a8e71378b1f4eda6b7c90f5382
+  url: https://github.com/jupyter-server/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 2509e19df2a34401e9aca6a25279dc3e88ac8dc9591a3369c7eb5aad61c49a7f
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install --no-deps --no-build-isolation . -vv
-  # y-py not available for s390x
-  skip: true # [s390x or py<37]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  skip: True # [py<38]
 
 requirements:
   host:
-    - hatch-nodejs-version
-    - hatchling >=1.12.0
     - pip
     - python
-    - wheel
+    - hatchling >=1.10.0
+    - hatch-nodejs-version
   run:
     - python
-    - importlib_metadata >=3.6 # [py<310]
-    - y-py >=0.6.0,<0.7.0
+    - importlib-metadata >=3.6  # [py<310]
+    - pycrdt >=0.10.1,<0.13.0
 
+# pytest needs hypercorn in conftest.py, which is not available.
 test:
   imports:
     - jupyter_ydoc
-  requires:
-    - pip
   commands:
     - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/jupyter-server/jupyter_ydoc
