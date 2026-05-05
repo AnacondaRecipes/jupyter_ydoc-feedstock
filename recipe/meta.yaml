@@ -25,7 +25,7 @@ requirements:
     - anyio >=4.12.1,<5.0.0
     - pycrdt >=0.10.1,<0.13.0
 
-# pytest needs hypercorn  and httpx-ws in conftest.py, which are not available.
+# pytest needs hypercorn and httpx-ws in conftest.py, which are not available.
 test:
   imports:
     - jupyter_ydoc
