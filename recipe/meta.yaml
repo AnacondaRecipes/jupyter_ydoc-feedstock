@@ -1,5 +1,5 @@
 {% set name = "jupyter_ydoc" %}
-{% set version = "3.3.3" %}
+{% set version = "3.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/jupyter-server/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 8e164ccfc4a8f660117a3c7c7b0f70d951916c2a58a8dc603aad85764c5c6515
+  sha256: 098a2333d718fcdd3cc1d906503120b905a7248b703f72939133c5c4fd57f35f
 
 build:
   number: 0
